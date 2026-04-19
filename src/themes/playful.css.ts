@@ -1,0 +1,82 @@
+import { createGlobalTheme } from '@vanilla-extract/css';
+import { vars } from '../tokens/theme.css';
+
+createGlobalTheme('[data-brand="playful"]', vars, {
+  color: {
+    primary: '#f472b6',
+    'primary-foreground': '#ffffff',
+    secondary: '#a78bfa',
+    'secondary-foreground': '#ffffff',
+    background: '#ffffff',
+    foreground: '#1f2937',
+    muted: '#fef3c7',
+    'muted-foreground': '#92400e',
+    border: '#fcd34d',
+    destructive: '#ef4444',
+    'destructive-foreground': '#ffffff',
+    success: '#22c55e',
+    'success-foreground': '#ffffff',
+    warning: '#f59e0b',
+    'warning-foreground': '#ffffff',
+  },
+  spacing: {
+    0: '0',
+    1: '0.25rem',
+    2: '0.5rem',
+    3: '0.75rem',
+    4: '1rem',
+    5: '1.25rem',
+    6: '1.5rem',
+    8: '2rem',
+    10: '2.5rem',
+    12: '3rem',
+    16: '4rem',
+  },
+  radius: {
+    none: '0',
+    sm: '0.25rem',
+    md: '0.5rem',
+    lg: '0.75rem',
+    xl: '1rem',
+    full: '9999px',
+  },
+  font: {
+    family: {
+      sans: 'Fredoka, system-ui, sans-serif',
+      serif: 'Baloo 2, Georgia, serif',
+      mono: 'Patrick Hand, ui-monospace, monospace',
+    },
+    size: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+    },
+    weight: {
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+    },
+  },
+  shadow: {
+    sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+    md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+    lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+    xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+  },
+  transition: {
+    fast: '150ms',
+    base: '200ms',
+    slow: '300ms',
+  },
+  zIndex: {
+    base: '0',
+    dropdown: '1000',
+    modal: '1050',
+    toast: '1100',
+  },
+});

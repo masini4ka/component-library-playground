@@ -1,0 +1,82 @@
+import { createGlobalTheme } from '@vanilla-extract/css';
+import { vars } from '../tokens/theme.css';
+
+createGlobalTheme('[data-brand="corporate"]', vars, {
+  color: {
+    primary: '#2563eb',
+    'primary-foreground': '#ffffff',
+    secondary: '#64748b',
+    'secondary-foreground': '#ffffff',
+    background: '#ffffff',
+    foreground: '#111827',
+    muted: '#f1f5f9',
+    'muted-foreground': '#64748b',
+    border: '#e2e8f0',
+    destructive: '#dc2626',
+    'destructive-foreground': '#ffffff',
+    success: '#16a34a',
+    'success-foreground': '#ffffff',
+    warning: '#ca8a04',
+    'warning-foreground': '#ffffff',
+  },
+  spacing: {
+    0: '0',
+    1: '0.25rem',
+    2: '0.5rem',
+    3: '0.75rem',
+    4: '1rem',
+    5: '1.25rem',
+    6: '1.5rem',
+    8: '2rem',
+    10: '2.5rem',
+    12: '3rem',
+    16: '4rem',
+  },
+  radius: {
+    none: '0',
+    sm: '0.125rem',
+    md: '0.375rem',
+    lg: '0.5rem',
+    xl: '0.75rem',
+    full: '9999px',
+  },
+  font: {
+    family: {
+      sans: 'Inter, system-ui, sans-serif',
+      serif: 'Georgia, serif',
+      mono: 'ui-monospace, monospace',
+    },
+    size: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+    },
+    weight: {
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+    },
+  },
+  shadow: {
+    sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+    md: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+    lg: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+    xl: '0 20px 25px -5px rgb(0 0 0 / 0.1)',
+  },
+  transition: {
+    fast: '100ms',
+    base: '150ms',
+    slow: '300ms',
+  },
+  zIndex: {
+    base: '0',
+    dropdown: '1000',
+    modal: '1050',
+    toast: '1100',
+  },
+});
