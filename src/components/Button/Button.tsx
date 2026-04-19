@@ -1,31 +1,27 @@
-import { type FC, type ButtonHTMLAttributes, type ReactNode } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
+import type { ButtonVariant, ButtonSize } from './Button.css';
 import * as styles from './Button.css';
 
-export type ButtonVariant = keyof typeof styles.variant;
-export type ButtonSize = keyof typeof styles.size;
+export type { ButtonVariant, ButtonSize };
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type ButtonProps = {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  loading?: boolean;
   fullWidth?: boolean;
-  leftIcon?: ReactNode;
-  rightIcon?: ReactNode;
-  children: ReactNode;
-}
+  loading?: boolean;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button: FC<ButtonProps> = ({
+export const Button = ({
   variant = 'primary',
   size = 'md',
-  loading = false,
   fullWidth = false,
-  leftIcon,
-  rightIcon,
+  loading = false,
   className,
-  disabled,
   children,
+  disabled,
+  'aria-label': ariaLabel,
   ...props
-}) => {
+}: ButtonProps) => {
   const classNames = [
     styles.variant[variant],
     styles.size[size],
@@ -36,11 +32,33 @@ export const Button: FC<ButtonProps> = ({
     .join(' ');
 
   return (
-    <button className={classNames} disabled={disabled || loading} {...props}>
-      {loading && <span className={styles.spinner} />}
-      {!loading && leftIcon && leftIcon}
-      {children}
-      {!loading && rightIcon && rightIcon}
+    <button
+      className={classNames}
+      disabled={disabled || loading}
+      aria-label={ariaLabel}
+      aria-busy={loading}
+      {...props}
+    >
+      {loading ? (
+        <>
+          <span className={styles.spinner} aria-hidden="true" />
+          {children}
+          <span className={styles.visuallyHidden}>Loading</span>
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 };
+
+const ButtonText = ({ children, className }: { children?: string; className?: string }) => (
+  <span className={[styles.text, className].filter(Boolean).join(' ')}>{children}</span>
+);
+
+const ButtonIcon = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <span className={[styles.icon, className].filter(Boolean).join(' ')}>{children}</span>
+);
+
+Button.Text = ButtonText;
+Button.Icon = ButtonIcon;

@@ -1,10 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import { Button } from './index';
 
-// Import brand CSS - loaded globally via preview.ts decorator
 import '../../themes/corporate.css';
 import '../../themes/playful.css';
 import '../../themes/luxury.css';
+
+const PlusIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+
+const ChevronDownIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M6 9l6 6 6-6" />
+  </svg>
+);
 
 const meta = {
   title: 'Components/Button',
@@ -116,6 +127,74 @@ export const FullWidth: Story = {
   },
 };
 
+export const WithIconLeft: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <Button variant="primary">
+        <Button.Icon><PlusIcon /></Button.Icon>
+        <Button.Text>Create New</Button.Text>
+      </Button>
+      <Button variant="secondary">
+        <Button.Icon><PlusIcon /></Button.Icon>
+        <Button.Text>Add Item</Button.Text>
+      </Button>
+      <Button variant="outline">
+        <Button.Icon><PlusIcon /></Button.Icon>
+        <Button.Text>Add More</Button.Text>
+      </Button>
+      <Button variant="ghost">
+        <Button.Icon><PlusIcon /></Button.Icon>
+        <Button.Text>Add</Button.Text>
+      </Button>
+    </div>
+  ),
+};
+
+export const WithIconRight: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <Button variant="primary">
+        <Button.Text>Submit</Button.Text>
+        <Button.Icon><ChevronDownIcon /></Button.Icon>
+      </Button>
+      <Button variant="secondary">
+        <Button.Text>Options</Button.Text>
+        <Button.Icon><ChevronDownIcon /></Button.Icon>
+      </Button>
+      <Button variant="outline">
+        <Button.Text>See More</Button.Text>
+        <Button.Icon><ChevronDownIcon /></Button.Icon>
+      </Button>
+      <Button variant="ghost">
+        <Button.Text>Expand</Button.Text>
+        <Button.Icon><ChevronDownIcon /></Button.Icon>
+      </Button>
+    </div>
+  ),
+};
+
+export const IconOnly: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <Button variant="primary" aria-label="Add">
+        <Button.Icon><PlusIcon /></Button.Icon>
+      </Button>
+      <Button variant="secondary" aria-label="Add">
+        <Button.Icon><PlusIcon /></Button.Icon>
+      </Button>
+      <Button variant="outline" aria-label="Add">
+        <Button.Icon><PlusIcon /></Button.Icon>
+      </Button>
+      <Button variant="ghost" aria-label="Add">
+        <Button.Icon><PlusIcon /></Button.Icon>
+      </Button>
+      <Button variant="destructive" aria-label="Add">
+        <Button.Icon><PlusIcon /></Button.Icon>
+      </Button>
+    </div>
+  ),
+};
+
 export const AllVariants: Story = {
   args: {
     children: 'Button',
@@ -133,6 +212,19 @@ export const AllVariants: Story = {
         <Button size="sm" variant="primary">Small</Button>
         <Button size="md" variant="primary">Medium</Button>
         <Button size="lg" variant="primary">Large</Button>
+      </div>
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <Button variant="primary">
+          <Button.Icon><PlusIcon /></Button.Icon>
+          <Button.Text>With Icon Left</Button.Text>
+        </Button>
+        <Button variant="primary">
+          <Button.Text>With Icon Right</Button.Text>
+          <Button.Icon><ChevronDownIcon /></Button.Icon>
+        </Button>
+        <Button variant="primary">
+          <Button.Icon><PlusIcon /></Button.Icon>
+        </Button>
       </div>
     </div>
   ),

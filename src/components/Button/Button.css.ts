@@ -1,6 +1,9 @@
 import { style, styleVariants, keyframes } from '@vanilla-extract/css';
 import { vars } from '../../tokens/theme.css';
 
+export type ButtonVariant = keyof typeof variant;
+export type ButtonSize = keyof typeof size;
+
 const spinAnimation = keyframes({
   to: { transform: 'rotate(360deg)' },
 });
@@ -127,6 +130,31 @@ export const spinner = style({
   borderRightColor: 'transparent',
   borderRadius: '50%',
   animation: `${spinAnimation} 0.6s linear infinite`,
+});
+
+export const text = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+});
+
+export const visuallyHidden = style({
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: '0',
+  margin: '-1px',
+  overflow: 'hidden',
+  clip: 'rect(0, 0, 0, 0)',
+  whiteSpace: 'nowrap',
+  border: '0',
+});
+
+export const icon = style({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '1em',
+  height: '1em',
 });
 
 export const fullWidth = style({
